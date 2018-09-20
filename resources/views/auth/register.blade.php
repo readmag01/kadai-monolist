@@ -20,8 +20,8 @@
                             {!! Form::password('password', ['class' => 'form-control']) !!}
                         </dv>
                         <div class="form-group">
-                            {!! Form::label('password_confimation', 'パスワードの確認') !!}
-                            {!! Form::password('password_confimation', ['class' => 'form-control']) !!}
+                            {!! Form::label('password_confirmation', 'パスワードの確認') !!}
+                            {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                         </div>
                         <div class="text-right">
                         {!! Form::submit('登録する', ['class' => 'btn btn-success']) !!}
