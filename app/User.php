@@ -140,7 +140,8 @@ class User extends Authenticatable
     public function is_having($itemIdOrCode)
     {
             /*
-            中間テーブルのitem_idカラムの$itemIdOrCodeをチェックし、取得する
+            中間テーブルのitem_idカラム=$itemIdOrCode
+            itemsテーブルのcodeカラム=$itemIdOrCode
             where(A, B)ではA=Bと考える
             */
         if(is_numeric($itemIdOrCode)){

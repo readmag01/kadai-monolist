@@ -1,6 +1,6 @@
 @if ($items)
     <div class="row">
-        @foreach ($items as $item)
+        @foreach ($items as $key => $item)
             <div class="item">
                 <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="panel panel-default">
@@ -20,6 +20,18 @@
                                 @endif
                             </div>
                         </div>
+                        @if(isset($item->count))
+                            <div class="panel-footer">
+                                
+                                <!--
+                                ランキングを取得するSQ で下記のようにcountを取得するように指定していたので
+                                RankingController からの$itemの中にはcountの値が入っている
+                                それを利用して$item->countの値が存在した場合にはランキング表示させている
+                                select('items.*', \DB::raw('COUNT(*) AS count'))
+                                -->
+                                <p class="text-center">{{ $key+1 }}位： {{ $item->count }}</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
