@@ -26,15 +26,12 @@ class ItemsController extends Controller
         
             /*
             requestからkeywordを取り出し、$keywordに値が与えられるとifの実行
+            条件指定した内容を$client->executeで実行し$rws_responseプロパティに代入
             */
         
         if($keyword) {
             $client = new \RakutenRws_Client();
             $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
-            
-            /*
-            条件指定した内容を$client->executeで実行しプロパティに代入
-            */
             $rws_response = $client->execute('IchibaItemSearch', [
                 'keyword' => $keyword,
                 'image_Flag' => 1,
@@ -76,5 +73,20 @@ class ItemsController extends Controller
             'items' => $items,
             ]);
         
+    }
+    
+    public function show($id) {
+        
+        
+        //want_usersの処理はItemモデルに記載
+        $item = Item::find($id);
+        $want_users = $item->want_users;
+        $have_users = $item->have_users;
+        
+        return view('items.show', [
+            'item' => $item,
+            'want_users' => $want_users,
+            'have_users' => $have_users,
+            ]);
     }
 }
